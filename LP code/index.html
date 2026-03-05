@@ -1,0 +1,1605 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIバイトくん365 | 自分の仕事にAIって必要？3分でわかる無料診断</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&family=M+PLUS+Rounded+1c:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+:root{
+  --peach:#FF8C69;
+  --peach-l:#FFF0EB;
+  --peach-m:#FFCAB8;
+  --yellow:#FFD84D;
+  --yellow-l:#FFFAED;
+  --mint:#5CC8A0;
+  --mint-l:#E8F9F3;
+  --sky:#64B5F6;
+  --sky-l:#EEF6FF;
+  --lavender:#B39DDB;
+  --lav-l:#F3EEFF;
+  --ink:#2D2D2D;
+  --gray:#6B7280;
+  --border:#F0EBE8;
+  --white:#FFFCFA;
+  --card:#FFFFFF;
+  --red:#F44336;
+}
+
+body{
+  font-family:'M PLUS Rounded 1c',sans-serif;
+  background:var(--white);
+  color:var(--ink);
+  overflow-x:hidden;
+}
+
+/* ── FLOATING DECO SHAPES ── */
+.deco{position:absolute;pointer-events:none;border-radius:50%;}
+
+/* ── NAV ── */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:rgba(255,252,250,.92);
+  backdrop-filter:blur(12px);
+  border-bottom:2px solid var(--border);
+  padding:14px 40px;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:all .3s;
+}
+.nav-logo{
+  font-family:'Zen Maru Gothic',sans-serif;
+  font-size:19px;font-weight:900;
+  color:var(--peach);text-decoration:none;
+  display:flex;align-items:center;gap:8px;
+}
+.nav-logo .n365{
+  background:var(--peach);color:white;
+  font-size:10px;padding:3px 8px;border-radius:20px;font-weight:700;
+}
+.nav-links{display:flex;align-items:center;gap:24px;}
+.nav-links a{
+  color:var(--gray);font-size:13px;text-decoration:none;
+  font-weight:700;letter-spacing:.03em;transition:color .2s;
+}
+.nav-links a:hover{color:var(--peach);}
+.nav-btn{
+  background:var(--peach);color:white;border:none;
+  padding:10px 24px;border-radius:40px;
+  font-family:'M PLUS Rounded 1c',sans-serif;
+  font-size:13px;font-weight:900;cursor:pointer;
+  letter-spacing:.03em;transition:all .25s;
+  box-shadow:0 4px 16px rgba(255,140,105,.35);
+}
+.nav-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,140,105,.45);}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  padding-top:70px;
+  background:linear-gradient(160deg, #FFF8F5 0%, #FFF3EE 40%, #F0F7FF 100%);
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;
+}
+
+/* floating blobs */
+.hero::before{
+  content:'';position:absolute;
+  width:600px;height:600px;
+  background:radial-gradient(circle, rgba(255,200,180,.25) 0%, transparent 70%);
+  top:-100px;right:-100px;border-radius:50%;
+}
+.hero::after{
+  content:'';position:absolute;
+  width:400px;height:400px;
+  background:radial-gradient(circle, rgba(100,181,246,.15) 0%, transparent 70%);
+  bottom:-50px;left:-80px;border-radius:50%;
+}
+
+.hero-inner{
+  max-width:1160px;margin:0 auto;padding:60px 40px;
+  display:grid;grid-template-columns:1fr 420px;gap:60px;
+  align-items:center;position:relative;z-index:1;width:100%;
+}
+
+/* left */
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  background:white;border:2px solid var(--peach-m);
+  padding:6px 16px;border-radius:40px;
+  font-size:12px;font-weight:700;color:var(--peach);
+  margin-bottom:24px;
+  box-shadow:0 2px 12px rgba(255,140,105,.12);
+  opacity:0;animation:fadeUp .6s .1s ease forwards;
+}
+.hero-tag .dot{width:8px;height:8px;background:var(--peach);border-radius:50%;}
+
+.hero-h1{
+  font-family:'Zen Maru Gothic',sans-serif;
+  font-size:clamp(28px,4vw,52px);
+  font-weight:900;line-height:1.25;
+  margin-bottom:20px;color:var(--ink);
+  opacity:0;animation:fadeUp .6s .2s ease forwards;
+}
+.hero-h1 .hl-peach{
+  color:var(--peach);
+  position:relative;display:inline-block;
+}
+.hero-h1 .hl-peach::after{
+  content:'';position:absolute;bottom:-3px;left:0;right:0;
+  height:6px;
+  background:linear-gradient(90deg,var(--peach-m),var(--yellow));
+  border-radius:10px;opacity:.7;
+}
+.hero-h1 .hl-box{
+  background:var(--yellow);color:var(--ink);
+  padding:2px 10px;border-radius:8px;
+}
+
+.hero-sub{
+  font-size:clamp(14px,1.6vw,17px);
+  color:var(--gray);line-height:1.9;
+  margin-bottom:32px;
+  opacity:0;animation:fadeUp .6s .35s ease forwards;
+}
+.hero-sub strong{color:var(--ink);}
+
+/* 3ポイント */
+.hero-points{
+  display:flex;flex-direction:column;gap:12px;
+  margin-bottom:36px;
+  opacity:0;animation:fadeUp .6s .45s ease forwards;
+}
+.hpt{
+  display:flex;align-items:flex-start;gap:12px;
+  background:white;border-radius:16px;
+  padding:14px 18px;
+  box-shadow:0 2px 16px rgba(0,0,0,.06);
+  border:1.5px solid var(--border);
+}
+.hpt-icon{font-size:22px;flex-shrink:0;margin-top:1px;}
+.hpt-text{font-size:14px;line-height:1.6;color:var(--ink);}
+.hpt-text strong{color:var(--peach);}
+
+.hero-cta-wrap{
+  display:flex;gap:14px;align-items:center;flex-wrap:wrap;
+  opacity:0;animation:fadeUp .6s .55s ease forwards;
+}
+.btn-main{
+  background:linear-gradient(135deg,var(--peach),#FF6B6B);
+  color:white;border:none;
+  padding:18px 40px;border-radius:50px;
+  font-family:'M PLUS Rounded 1c',sans-serif;
+  font-size:16px;font-weight:900;cursor:pointer;
+  letter-spacing:.03em;
+  box-shadow:0 6px 24px rgba(255,140,105,.45);
+  transition:all .25s;display:inline-flex;align-items:center;gap:10px;
+  text-decoration:none;
+}
+.btn-main:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(255,140,105,.55);}
+.btn-main .arrow{transition:transform .2s;}
+.btn-main:hover .arrow{transform:translateX(4px);}
+.btn-sub{
+  color:var(--gray);font-size:13px;font-weight:700;
+  text-decoration:none;display:flex;align-items:center;gap:4px;
+  transition:color .2s;background:none;border:none;cursor:pointer;
+}
+.btn-sub:hover{color:var(--peach);}
+
+.hero-trust{
+  display:flex;align-items:center;gap:16px;margin-top:24px;
+  opacity:0;animation:fadeUp .6s .65s ease forwards;
+}
+.trust-item{
+  display:flex;align-items:center;gap:6px;
+  font-size:12px;color:var(--gray);font-weight:700;
+}
+.trust-item::before{content:'✓';color:var(--mint);font-weight:900;}
+.trust-sep{color:var(--border);font-size:18px;}
+
+/* right — character + cards */
+.hero-right{
+  position:relative;
+  opacity:0;animation:fadeIn .8s .3s ease forwards;
+}
+
+/* character card */
+.char-card{
+  background:white;border-radius:28px;
+  padding:32px 28px;
+  box-shadow:0 12px 48px rgba(255,140,105,.15),0 4px 16px rgba(0,0,0,.06);
+  border:2px solid var(--border);
+  text-align:center;position:relative;overflow:hidden;
+}
+.char-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:6px;
+  background:linear-gradient(90deg,var(--peach),var(--yellow),var(--mint));
+}
+.char-svg-wrap{
+  width:180px;height:180px;margin:0 auto 12px;
+  animation:float 3s ease-in-out infinite;
+  filter:drop-shadow(0 12px 20px rgba(255,140,105,.2));
+}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+.char-name{
+  font-family:'Zen Maru Gothic',sans-serif;
+  font-size:22px;font-weight:900;color:var(--ink);margin-bottom:2px;
+}
+.char-role{font-size:11px;color:var(--gray);letter-spacing:.1em;margin-bottom:14px;font-weight:700;}
+
+.char-bubble{
+  background:var(--peach-l);border:2px solid var(--peach-m);
+  border-radius:16px;padding:12px 16px;
+  font-size:13px;line-height:1.7;color:var(--ink);text-align:left;
+  position:relative;margin-top:4px;
+}
+.char-bubble::before{
+  content:'';position:absolute;top:-10px;left:50%;transform:translateX(-50%);
+  border:5px solid transparent;border-bottom-color:var(--peach-m);
+}
+
+/* floating mini cards */
+.mini-card{
+  position:absolute;background:white;border-radius:16px;
+  padding:10px 14px;
+  box-shadow:0 4px 20px rgba(0,0,0,.1);
+  border:1.5px solid var(--border);
+  font-size:12px;font-weight:700;
+  display:flex;align-items:center;gap:7px;
+  white-space:nowrap;
+  animation:float2 4s ease-in-out infinite;
+}
+@keyframes float2{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-6px) rotate(1deg)}}
+
+.mc1{top:-20px;left:-30px;color:var(--mint);border-color:var(--mint-l);animation-delay:.5s;}
+.mc2{top:40px;right:-36px;color:var(--sky);border-color:var(--sky-l);animation-delay:1s;}
+.mc3{bottom:60px;left:-40px;color:var(--lavender);border-color:var(--lav-l);animation-delay:1.5s;}
+.mc4{bottom:-10px;right:-20px;color:var(--peach);border-color:var(--peach-l);animation-delay:.8s;}
+
+/* ── COMPETITOR INTEL ── */
+.comp-section{
+  background:white;
+  border-top:3px solid var(--border);
+  border-bottom:3px solid var(--border);
+  padding:0;
+}
+.comp-header{
+  background:linear-gradient(135deg,var(--peach) 0%,#FF6B6B 100%);
+  padding:14px 40px;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;
+}
+.comp-header-l{display:flex;align-items:center;gap:12px;}
+.comp-title-badge{
+  font-family:'Zen Maru Gothic',sans-serif;
+  font-size:14px;font-weight:900;color:white;letter-spacing:.03em;
+  display:flex;align-items:center;gap:8px;
+}
+.comp-date{font-size:11px;color:rgba(255,255,255,.8);font-weight:700;letter-spacing:.08em;}
+.live-dot{
+  width:8px;height:8px;background:var(--yellow);border-radius:50%;
+  animation:pulse 1.5s ease-in-out infinite;
+  display:inline-block;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+.comp-update-note{
+  font-size:11px;color:rgba(255,255,255,.85);font-weight:700;
+  background:rgba(255,255,255,.2);border-radius:20px;padding:4px 12px;
+}
+
+.comp-body{padding:36px 40px;max-width:1160px;margin:0 auto;}
+
+.comp-lead{
+  display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;margin-bottom:28px;
+}
+.comp-lead-text h3{
+  font-family:'Zen Maru Gothic',sans-serif;
+  font-size:clamp(18px,2.5vw,26px);font-weight:900;
+  color:var(--ink);margin-bottom:8px;line-height:1.3;
+}
+.comp-lead-text h3 span{color:var(--peach);}
+.comp-lead-text p{font-size:13px;color:var(--gray);line-height:1.8;}
+.comp-our-badge{
+  background:linear-gradient(135deg,var(--peach),#FF6B6B);
+  color:white;border-radius:20px;padding:20px 28px;text-align:center;
+  min-width:180px;box-shadow:0 6px 24px rgba(255,140,105,.3);
+}
+.comp-our-badge .ob-label{font-size:10px;font-weight:700;opacity:.8;letter-spacing:.1em;margin-bottom:6px;}
+.comp-our-badge .ob-val{font-family:'Zen Maru Gothic',sans-serif;font-size:22px;font-weight:900;line-height:1;}
+.comp-our-badge .ob-sub{font-size:10px;opacity:.75;margin-top:4px;}
+
+/* competitor cards */
+.comp-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;}
+.comp-card{
+  background:var(--white);border:2px solid var(--border);border-radius:20px;
+  padding:20px;transition:all .25s;position:relative;overflow:hidden;
+}
+.comp-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.08);border-color:var(--peach-m);}
+.comp-card.our{
+  border-color:var(--peach);background:var(--peach-l);
+  grid-column:1/-1;
+  display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;
+}
+.comp-card.our::before{
+  content:'🏆 今週の最安値';
+  position:absolute;top:12px;right:16px;
+  background:var(--peach);color:white;
+  font-size:10px;font-weight:900;padding:4px 12px;border-radius:20px;
+}
+.cc-rank{
+  font-family:'Zen Maru Gothic',sans-serif;
+  font-size:28px;font-weight:900;color:var(--border);
+}
+.comp-card.our .cc-rank{color:var(--peach);font-size:32px;}
+.cc-name{font-family:'Zen Maru Gothic',sans-serif;font-size:15px;font-weight:900;color:var(--ink);margin-bottom:3px;}
+.cc-company{font-size:11px;color:var(--gray);margin-bottom:8px;}
+.cc-area{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:11px;font-weight:700;color:var(--sky);
+  background:var(--sky-l);border-radius:20px;padding:2px 10px;margin-bottom:8px;
+}
+.cc-price{
+  font-family:'Zen Maru Gothic',sans-serif;
+  font-size:20px;font-weight:900;color:var(--peach);margin-bottom:4px;
+}
+.comp-card.our .cc-price{font-size:24px;}
+.cc-init{font-size:11px;color:var(--gray);margin-bottom:8px;}
+.cc-escort{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:11px;font-weight:700;
+  border-radius:20px;padding:3px 10px;
+}
+.cc-escort.good{color:var(--mint);background:var(--mint-l);}
+.cc-escort.ok{color:var(--sky);background:var(--sky-l);}
+.cc-escort.bad{color:var(--gray);background:#F5F5F5;}
+.cc-note{font-size:11px;color:var(--gray);line-height:1.6;margin-top:8px;}
+
+.comp-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:4px;
+}
+.cs{
+  background:var(--white);border:1.5px solid var(--border);border-radius:16px;
+  padding:16px;text-align:center;
+}
+.cs .cs-val{font-family:'Zen Maru Gothic',sans-serif;font-size:18px;font-weight:900;color:var(--peach);margin-bottom:4px;}
+.cs .cs-lbl{font-size:11px;color:var(--gray);font-weight:700;line-height:1.4;}
+
+/* ── DIAGNOSIS SECTION ── */
+.diag-section{
+  padding:80px 0;
+  background:linear-gradient(180deg,#FFF8F5 0%,#FFF0EB 100%);
+  position:relative;overflow:hidden;
+}
+.diag-section::before{
+  content:'';position:absolute;
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(255,200,180,.2) 0%,transparent 70%);
+  top:-100px;right:-100px;border-radius:50%;pointer-events:none;
+}
+
+.sec-label{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--peach-l);border:2px solid var(--peach-m);
+  border-radius:40px;padding:5px 16px;
+  font-size:11px;font-weight:900;color:var(--peach);
+  letter-spacing:.1em;margin-bottom:16px;
+}
+.sec-h2{
+  font-family:'Zen Maru Gothic',sans-serif;
+  font-size:clamp(24px,3.5vw,40px);font-weight:900;
+  line-height:1.3;margin-bottom:12px;color:var(--ink);
+}
+.sec-h2 span{color:var(--peach);}
+.sec-p{font-size:14px;color:var(--gray);line-height:1.9;max-width:560px;}
+
+/* industry cards */
+.ind-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:36px 0 0;}
+.ind-card{
+  background:white;border:2.5px solid var(--border);border-radius:20px;
+  padding:24px 20px;cursor:pointer;transition:all .25s;
+  display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;
+}
+.ind-card:hover{border-color:var(--peach-m);transform:translateY(-3px);box-shadow:0 8px 24px rgba(255,140,105,.12);}
+.ind-card.sel{border-color:var(--peach);background:var(--peach-l);transform:translateY(-3px);box-shadow:0 8px 24px rgba(255,140,105,.2);}
+.ind-card .ic{font-size:36px;line-height:1;}
+.ind-card h3{font-family:'Zen Maru Gothic',sans-serif;font-size:15px;font-weight:900;color:var(--ink);}
+.ind-card p{font-size:12px;color:var(--gray);line-height:1.6;}
+.ind-card.sel h3{color:var(--peach);}
+.ind-next-wrap{text-align:center;margin-top:24px;}
+
+/* quiz */
+.quiz-box{
+  background:white;border-radius:28px;
+  border:2px solid var(--border);
+  padding:40px;margin-top:24px;
+  box-shadow:0 4px 32px rgba(0,0,0,.06);
+}
+.q-prog-wrap{margin-bottom:28px;}
+.q-prog-bar{height:8px;background:var(--border);border-radius:40px;overflow:hidden;margin-bottom:8px;}
+.q-prog-fill{height:100%;background:linear-gradient(90deg,var(--peach),var(--yellow));border-radius:40px;transition:width .5s ease;}
+.q-prog-txt{display:flex;justify-content:space-between;font-size:12px;color:var(--gray);font-weight:700;}
+.q-question{
+  font-family:'Zen Maru Gothic',sans-serif;
+  font-size:clamp(16px,2.2vw,22px);font-weight:900;
+  color:var(--ink);line-height:1.5;margin-bottom:6px;
+}
+.q-sub{font-size:13px;color:var(--gray);margin-bottom:24px;line-height:1.6;}
+.q-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.q-opt{
+  background:var(--white);border:2px solid var(--border);border-radius:16px;
+  padding:16px 18px;font-size:13px;font-weight:700;color:var(--ink);
+  cursor:pointer;text-align:left;transition:all .2s;line-height:1.5;
+  font-family:'M PLUS Rounded 1c',sans-serif;
+}
+.q-opt:hover{border-color:var(--peach-m);background:var(--peach-l);color:var(--peach);}
+.q-opt.sel{border-color:var(--peach);background:var(--peach-l);color:var(--peach);}
+.q-opt.sel::before{content:'✓ ';font-weight:900;}
+.q-nav{display:flex;justify-content:space-between;align-items:center;margin-top:28px;}
+.btn-qback{
+  background:none;border:2px solid var(--border);color:var(--gray);
+  padding:12px 22px;border-radius:40px;
+  font-family:'M PLUS Rounded 1c',sans-serif;font-size:13px;font-weight:700;cursor:pointer;
+  transition:all .2s;
+}
+.btn-qback:hover{border-color:var(--gray);color:var(--ink);}
+.btn-qnext{
+  background:linear-gradient(135deg,var(--peach),#FF6B6B);color:white;border:none;
+  padding:14px 32px;border-radius:40px;
+  font-family:'M PLUS Rounded 1c',sans-serif;font-size:14px;font-weight:900;cursor:pointer;
+  box-shadow:0 4px 16px rgba(255,140,105,.35);transition:all .2s;letter-spacing:.03em;
+}
+.btn-qnext:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,140,105,.45);}
+.btn-qnext:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none;}
+
+/* ── CONCEPT SECTION ── */
+.concept-section{padding:80px 0;background:white;}
+.concept-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-top:48px;}
+.timeline{display:flex;flex-direction:column;gap:0;}
+.tl-item{display:flex;gap:20px;align-items:stretch;}
+.tl-line{display:flex;flex-direction:column;align-items:center;gap:0;flex-shrink:0;}
+.tl-dot-c{
+  width:48px;height:48px;border-radius:50%;
+  background:var(--peach-l);border:3px solid var(--peach-m);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Zen Maru Gothic',sans-serif;font-size:13px;font-weight:900;color:var(--peach);
+  flex-shrink:0;
+}
+.tl-dot-c.now{background:var(--peach);color:white;border-color:var(--peach);box-shadow:0 4px 16px rgba(255,140,105,.35);}
+.tl-connector{flex:1;width:3px;background:var(--border);margin:4px 0;}
+.tl-body{padding:12px 0 28px;}
+.tl-body h4{font-family:'Zen Maru Gothic',sans-serif;font-size:16px;font-weight:900;color:var(--ink);margin-bottom:4px;}
+.tl-body p{font-size:13px;color:var(--gray);line-height:1.7;}
+.tl-body .now-text{color:var(--peach);font-weight:900;}
+
+.vs-card{border-radius:24px;overflow:hidden;border:2px solid var(--border);}
+.vs-thead{display:grid;grid-template-columns:1fr 40px 1fr;background:var(--ink);}
+.vs-th{padding:14px 20px;font-size:12px;font-weight:900;letter-spacing:.1em;}
+.vs-th.bad{color:rgba(255,255,255,.45);}
+.vs-th.vs{color:rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:11px;}
+.vs-th.good{color:var(--yellow);}
+.vs-row-item{display:grid;grid-template-columns:1fr 40px 1fr;border-top:1px solid var(--border);}
+.vs-row-item:nth-child(even){background:#FDFDFB;}
+.vc{padding:14px 20px;font-size:13px;line-height:1.4;}
+.vc.bad{color:var(--gray);}
+.vc.mid{display:flex;align-items:center;justify-content:center;font-size:16px;border-left:1px solid var(--border);border-right:1px solid var(--border);}
+.vc.good{color:var(--ink);font-weight:700;}
+
+.shigoto-card{
+  background:var(--yellow-l);border:2px solid var(--yellow);
+  border-radius:20px;padding:24px;margin-top:16px;
+}
+.shigoto-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;}
+.sg-item{background:white;border-radius:14px;padding:14px;border:1.5px solid var(--border);}
+.sg-item .sg-tag{font-size:10px;font-weight:900;letter-spacing:.1em;margin-bottom:6px;}
+.sg-item.work .sg-tag{color:var(--mint);}
+.sg-item.task .sg-tag{color:var(--gray);}
+.sg-item h5{font-family:'Zen Maru Gothic',sans-serif;font-size:14px;font-weight:900;margin-bottom:4px;color:var(--ink);}
+.sg-item p{font-size:12px;color:var(--gray);line-height:1.6;}
+
+/* ── SERVICES SECTION ── */
+.services-section{padding:80px 0;background:var(--white);}
+
+.rec-waiting{
+  margin-top:40px;text-align:center;padding:56px;
+  background:white;border-radius:24px;border:2.5px dashed var(--peach-m);
+}
+.rec-waiting .wi{font-size:52px;margin-bottom:16px;}
+.rec-waiting p{font-family:'Zen Maru Gothic',sans-serif;font-size:16px;color:var(--gray);line-height:2;}
+
+.rec-header{
+  background:linear-gradient(135deg,var(--peach),#FF6B6B);
+  border-radius:20px 20px 0 0;padding:28px 36px;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  margin-top:32px;
+}
+.rh-title{font-family:'Zen Maru Gothic',sans-serif;font-size:20px;font-weight:900;color:white;}
+.rh-count{text-align:right;}
+.rh-count .rc-n{font-family:'Zen Maru Gothic',sans-serif;font-size:40px;font-weight:900;color:white;line-height:1;}
+.rh-count .rc-l{font-size:11px;color:rgba(255,255,255,.8);font-weight:700;}
+
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.svc-item{
+  background:white;border:2px solid var(--border);border-radius:16px;
+  padding:18px 20px;display:flex;gap:14px;align-items:flex-start;
+  transition:all .25s;position:relative;overflow:hidden;
+}
+.svc-item.rec{border-color:var(--peach-m);}
+.svc-item.rec::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--peach),var(--yellow));}
+.svc-item.not-rec{opacity:.35;}
+.svc-cb{
+  width:24px;height:24px;border-radius:8px;border:2px solid var(--border);
+  background:white;flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all .2s;margin-top:2px;
+}
+.svc-item.rec .svc-cb{background:var(--peach);border-color:var(--peach);color:white;font-size:12px;font-weight:900;}
+.svc-info h4{font-family:'Zen Maru Gothic',sans-serif;font-size:14px;font-weight:900;margin-bottom:4px;color:var(--ink);}
+.svc-info .svc-cat{font-size:10px;color:var(--gray);letter-spacing:.08em;margin-bottom:4px;font-weight:700;}
+.svc-info p{font-size:12px;color:var(--gray);line-height:1.6;margin-bottom:8px;}
+.svc-prices{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.svc-market{font-size:11px;color:var(--gray);text-decoration:line-through;}
+.svc-our{font-family:'Zen Maru Gothic',sans-serif;font-size:15px;color:var(--peach);font-weight:900;}
+.svc-badge{font-size:10px;background:var(--yellow);color:var(--ink);border-radius:20px;padding:2px 8px;font-weight:900;}
+
+/* estimate box */
+.est-box{
+  background:linear-gradient(160deg,var(--ink),#3D3D3D);
+  border-radius:0 0 20px 20px;padding:40px;color:white;
+}
+.est-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-bottom:36px;}
+.est-label{font-size:11px;color:rgba(255,255,255,.5);letter-spacing:.15em;font-weight:700;margin-bottom:10px;}
+.est-amount{font-family:'Zen Maru Gothic',sans-serif;font-size:52px;font-weight:900;color:var(--yellow);line-height:1;margin-bottom:8px;}
+.est-amount span{font-size:22px;}
+.est-note{font-size:12px;color:rgba(255,255,255,.45);line-height:1.8;}
+.hourly-card{
+  background:rgba(255,107,107,.15);border:2px solid rgba(255,107,107,.3);
+  border-radius:16px;padding:20px;margin-top:16px;
+}
+.hc-label{font-size:11px;color:rgba(255,255,255,.6);font-weight:700;letter-spacing:.1em;margin-bottom:8px;}
+.hc-val{font-family:'Zen Maru Gothic',sans-serif;font-size:44px;font-weight:900;color:#FF8A80;line-height:1;}
+.hc-val span{font-size:18px;}
+.hc-note{font-size:12px;color:rgba(255,255,255,.4);margin-top:8px;line-height:1.7;}
+.est-bar-wrap{margin:0 0 8px;}
+.est-bar-info{display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.4);margin-bottom:6px;font-weight:700;}
+.est-bar-bg{height:10px;background:rgba(255,255,255,.08);border-radius:40px;overflow:hidden;}
+.est-bar-fill{height:100%;border-radius:40px;transition:width 1s ease;}
+.est-cta-area{text-align:center;border-top:1px solid rgba(255,255,255,.1);padding-top:32px;}
+.est-cta-area p{font-size:14px;color:rgba(255,255,255,.6);line-height:1.9;margin-bottom:24px;}
+
+/* ── CLOSING SECTION ── */
+.closing-section{padding:80px 0;background:white;}
+
+.skit-box{
+  background:var(--peach-l);border:2px solid var(--peach-m);
+  border-radius:24px;padding:36px;margin:40px 0;
+}
+.skit-title{font-family:'Zen Maru Gothic',sans-serif;font-size:18px;font-weight:900;color:var(--peach);margin-bottom:24px;}
+.skit-msgs{display:flex;flex-direction:column;gap:14px;}
+.msg{display:flex;gap:12px;align-items:flex-end;}
+.msg.r{flex-direction:row-reverse;}
+.msg-av{
+  width:40px;height:40px;border-radius:50%;flex-shrink:0;
+  background:white;border:2px solid var(--border);
+  display:flex;align-items:center;justify-content:center;font-size:20px;
+}
+.msg-av.ai{background:var(--peach);border-color:var(--peach);}
+.msg-inner{display:flex;flex-direction:column;gap:3px;}
+.msg-name{font-size:10px;font-weight:700;color:var(--gray);}
+.msg.r .msg-name{text-align:right;}
+.msg-bbl{
+  max-width:380px;padding:12px 16px;border-radius:16px;
+  font-size:13px;line-height:1.7;color:var(--ink);
+}
+.msg.l .msg-bbl{background:white;border:1.5px solid var(--border);border-radius:4px 16px 16px 16px;}
+.msg.r .msg-bbl{background:var(--peach);color:white;border-radius:16px 4px 16px 16px;}
+
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:40px 0;}
+.why-card{
+  background:var(--white);border:2px solid var(--border);border-radius:20px;
+  padding:28px 24px;transition:all .25s;
+}
+.why-card:hover{border-color:var(--peach-m);transform:translateY(-3px);box-shadow:0 8px 24px rgba(255,140,105,.12);}
+.why-ic{font-size:36px;margin-bottom:16px;display:block;}
+.why-card h4{font-family:'Zen Maru Gothic',sans-serif;font-size:16px;font-weight:900;color:var(--ink);margin-bottom:8px;line-height:1.4;}
+.why-card p{font-size:13px;color:var(--gray);line-height:1.8;}
+
+/* ── FINAL CTA ── */
+.fcta-section{
+  padding:96px 0;text-align:center;
+  background:linear-gradient(160deg,#FFF0EB 0%,#FFF8F0 50%,#F0F7FF 100%);
+  position:relative;overflow:hidden;
+}
+.fcta-section::before{
+  content:'';position:absolute;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(255,200,180,.25) 0%,transparent 70%);
+  top:-100px;left:50%;transform:translateX(-50%);border-radius:50%;pointer-events:none;
+}
+.fcta-h2{
+  font-family:'Zen Maru Gothic',sans-serif;
+  font-size:clamp(28px,4.5vw,56px);font-weight:900;
+  color:var(--ink);line-height:1.25;margin-bottom:16px;position:relative;z-index:1;
+}
+.fcta-h2 span{color:var(--peach);}
+.fcta-p{
+  font-size:15px;color:var(--gray);line-height:1.9;margin-bottom:48px;
+  position:relative;z-index:1;
+}
+.fcta-notes{
+  display:flex;justify-content:center;gap:20px;flex-wrap:wrap;
+  margin-top:20px;position:relative;z-index:1;
+}
+.fcta-notes span{
+  font-size:12px;color:var(--gray);font-weight:700;
+  display:flex;align-items:center;gap:4px;
+}
+.fcta-notes span::before{content:'✓';color:var(--mint);font-weight:900;}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--ink);padding:40px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;
+}
+.foot-logo{font-family:'Zen Maru Gothic',sans-serif;font-size:18px;font-weight:900;color:var(--peach);}
+.foot-sub{font-size:12px;color:rgba(255,255,255,.35);margin-top:4px;}
+.foot-r{font-size:12px;color:rgba(255,255,255,.3);text-align:right;line-height:2;}
+
+/* ── CONTAINER ── */
+.con{max-width:1160px;margin:0 auto;padding:0 40px;}
+
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
+.rv.v{opacity:1;transform:none;}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  .ind-grid{grid-template-columns:1fr 1fr;}
+  .concept-grid,.est-grid{grid-template-columns:1fr;}
+  .svc-grid,.why-grid,.comp-cards{grid-template-columns:1fr;}
+  .comp-card.our{grid-template-columns:auto 1fr;}
+  .comp-stats{grid-template-columns:1fr 1fr;}
+  .q-opts{grid-template-columns:1fr;}
+  .con{padding:0 20px;}
+  #nav{padding:12px 20px;}
+  .nav-links a:not(.nav-btn){display:none;}
+  .comp-body{padding:24px 20px;}
+  .comp-lead{grid-template-columns:1fr;}
+  .shigoto-grid{grid-template-columns:1fr;}
+}
+/* ── SKIT EXTRAS ── */
+.skit-phase{
+  display:inline-block;font-size:12px;font-weight:900;
+  color:var(--peach);background:var(--peach-l);
+  border:1.5px solid var(--peach-m);border-radius:20px;
+  padding:4px 14px;margin-bottom:16px;letter-spacing:.05em;
+}
+.skit-divider{
+  display:flex;align-items:center;gap:12px;margin:28px 0 20px;
+}
+.sd-line{flex:1;height:2px;background:var(--border);border-radius:2px;}
+.sd-label{
+  font-size:13px;font-weight:900;color:var(--mint);
+  background:var(--mint-l);border:1.5px solid var(--mint);
+  border-radius:20px;padding:5px 18px;white-space:nowrap;
+}
+
+/* ── FLOW ── */
+.flow-wrap{
+  margin-top:48px;
+  display:flex;flex-direction:column;gap:0;
+  position:relative;
+}
+.flow-wrap::before{
+  content:'';position:absolute;left:44px;top:60px;bottom:80px;width:3px;
+  background:linear-gradient(to bottom,var(--peach-m),var(--yellow),var(--mint),var(--lavender));
+  border-radius:4px;
+}
+.flow-step{
+  display:grid;grid-template-columns:88px 1fr;gap:28px;
+  align-items:flex-start;position:relative;margin-bottom:0;
+}
+.flow-step:not(.flow-step-last){padding-bottom:0;}
+.flow-icon-wrap{
+  width:88px;height:88px;border-radius:50%;
+  border:3px solid;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;position:relative;z-index:1;
+  background:white;
+}
+.flow-icon{font-size:36px;line-height:1;}
+.flow-content{
+  background:white;border:2px solid var(--border);border-radius:20px;
+  padding:24px 28px;margin-bottom:24px;
+  box-shadow:0 2px 16px rgba(0,0,0,.05);
+}
+.flow-num{font-size:10px;font-weight:900;letter-spacing:.2em;margin-bottom:6px;}
+.flow-title{
+  font-family:'Zen Maru Gothic',sans-serif;
+  font-size:18px;font-weight:900;color:var(--ink);margin-bottom:10px;
+}
+.flow-desc{font-size:13px;color:var(--gray);line-height:1.9;margin-bottom:14px;}
+.flow-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:12px;font-weight:700;color:var(--peach);
+  background:var(--peach-l);border:1.5px solid var(--peach-m);
+  border-radius:20px;padding:5px 14px;
+}
+.flow-arrow{
+  position:absolute;left:44px;transform:translateX(-50%);
+  bottom:-14px;z-index:2;
+  font-size:20px;color:rgba(0,0,0,.15);line-height:1;
+  display:flex;align-items:center;justify-content:center;
+  width:24px;height:24px;
+}
+.flow-step-last .flow-content{
+  border-color:var(--lavender);
+  background:var(--lav-l);
+}
+.flow-guarantee{
+  display:flex;align-items:flex-start;gap:16px;
+  background:white;border:2px solid var(--mint);
+  border-radius:20px;padding:24px 28px;margin-top:12px;
+  box-shadow:0 4px 20px rgba(92,200,160,.12);
+}
+.fg-icon{font-size:32px;flex-shrink:0;}
+.fg-text{display:flex;flex-direction:column;gap:4px;}
+.fg-text strong{font-family:'Zen Maru Gothic',sans-serif;font-size:16px;font-weight:900;color:var(--mint);}
+.fg-text span{font-size:13px;color:var(--gray);line-height:1.8;}
+
+@media(max-width:900px){
+  .flow-wrap::before{display:none;}
+  .flow-step{grid-template-columns:1fr;}
+  .flow-icon-wrap{width:64px;height:64px;margin-bottom:12px;}
+  .flow-icon{font-size:28px;}
+  .flow-arrow{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    🤖 AIバイトくん
+    <span class="n365">365</span>
+  </a>
+  <div class="nav-links">
+    <a href="#diag">無料診断</a>
+    <a href="#concept">コンセプト</a>
+    <a href="#services">サービス</a>
+    <a href="https://lin.ee/lblXfAH" target="_blank" class="nav-btn" style="text-decoration:none;">ちょっと聞いてみる 🌸</a>
+  </div>
+</nav>
+
+<!-- ════════════════════════════
+     HERO
+════════════════════════════ -->
+<section class="hero">
+  <div class="hero-inner">
+
+    <!-- LEFT -->
+    <div class="hero-l">
+      <div class="hero-tag">
+        <span class="dot"></span>
+        兵庫・大阪・京都の中小企業向け
+      </div>
+
+      <h1 class="hero-h1">
+        自分の仕事に、<br>
+        AIって<span class="hl-peach">本当に必要？</span><br>
+        <span class="hl-box">3分</span>でわかります。
+      </h1>
+
+      <p class="hero-sub">
+        「AIを導入した方がいい」とよく聞くけど、<br>
+        <strong>ほんとにAIでウチの何かが変わるの？変わるなら何から始めればいいの？</strong>、<br>
+        正直ピンとこないですよね。そこでこの自己診断サイトは、
+      </p>
+
+      <div class="hero-points">
+        <div class="hpt">
+          <span class="hpt-icon">🔍</span>
+          <div class="hpt-text"><strong>AIが「必要かどうか」</strong>を正直に診断します。不要なら「不要」と言います。</div>
+        </div>
+        <div class="hpt">
+          <span class="hpt-icon">📋</span>
+          <div class="hpt-text">40のサービスから<strong>あなたの業務に合ったものだけ</strong>をリストアップ。</div>
+        </div>
+        <div class="hpt">
+          <span class="hpt-icon">💰</span>
+          <div class="hpt-text">相場と最安値を並べて表示。<strong>いくらくらいかかるのか把握して</strong>から検討できます。</div>
+        </div>
+      </div>
+
+      <div class="hero-cta-wrap">
+        <a href="#diag" class="btn-main">
+          無料で診断してみる
+          <span class="arrow">→</span>
+        </a>
+        <button class="btn-sub" onclick="document.getElementById('concept').scrollIntoView({behavior:'smooth'})">
+          もっと詳しく見る
+        </button>
+      </div>
+
+      <div class="hero-trust">
+        <span class="trust-item">登録不要</span>
+        <span class="trust-sep">|</span>
+        <span class="trust-item">完全無料</span>
+        <span class="trust-sep">|</span>
+        <span class="trust-item">3分で完了</span>
+        <span class="trust-sep">|</span>
+        <span class="trust-item">営業無し</span>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="hero-right">
+      <div class="mini-card mc1">✅ 書類作成が自動化</div>
+      <div class="mini-card mc2">💬 問い合わせ対応AI</div>
+      <div class="mini-card mc3">📊 売上レポート自動化</div>
+      <div class="mini-card mc4">🎉 月40時間の削減</div>
+
+      <div class="char-card">
+        <svg class="char-svg-wrap" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <!-- body -->
+          <rect x="55" y="88" width="90" height="76" rx="10" fill="#FFD6C8"/>
+          <!-- collar -->
+          <path d="M79 88 L100 106 L121 88" fill="none" stroke="white" stroke-width="3"/>
+          <!-- tie cute bow -->
+          <path d="M93 106 L100 120 L107 106 L100 112 Z" fill="#FF8C69"/>
+          <!-- head -->
+          <rect x="58" y="26" width="84" height="68" rx="14" fill="#FFE0D5"/>
+          <!-- screen face -->
+          <rect x="66" y="34" width="68" height="52" rx="6" fill="white" opacity=".9"/>
+          <!-- eyes - cute rounded -->
+          <ellipse cx="84" cy="52" rx="8" ry="9" fill="#FF8C69"/>
+          <ellipse cx="116" cy="52" rx="8" ry="9" fill="#FF8C69"/>
+          <ellipse cx="84" cy="54" rx="4" ry="5" fill="#2D2D2D"/>
+          <ellipse cx="116" cy="54" rx="4" ry="5" fill="#2D2D2D"/>
+          <!-- shine dots -->
+          <circle cx="86" cy="52" r="2" fill="white"/>
+          <circle cx="118" cy="52" r="2" fill="white"/>
+          <!-- blush -->
+          <ellipse cx="74" cy="63" rx="7" ry="4" fill="#FFB5A0" opacity=".6"/>
+          <ellipse cx="126" cy="63" rx="7" ry="4" fill="#FFB5A0" opacity=".6"/>
+          <!-- smile -->
+          <path d="M86 68 Q100 78 114 68" stroke="#FF8C69" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <!-- antenna -->
+          <line x1="100" y1="26" x2="100" y2="10" stroke="#FFB5A0" stroke-width="3"/>
+          <circle cx="100" cy="7" r="6" fill="#FF8C69"/>
+          <circle cx="100" cy="7" r="3" fill="white" opacity=".6"/>
+          <!-- arms -->
+          <rect x="18" y="96" width="37" height="14" rx="7" fill="#FFD6C8"/>
+          <rect x="145" y="96" width="37" height="14" rx="7" fill="#FFD6C8"/>
+          <!-- hands -->
+          <circle cx="16" cy="103" r="11" fill="#FFE0D5"/>
+          <circle cx="184" cy="103" r="11" fill="#FFE0D5"/>
+          <!-- legs -->
+          <rect x="68" y="161" width="24" height="30" rx="8" fill="#FFD6C8"/>
+          <rect x="108" y="161" width="24" height="30" rx="8" fill="#FFD6C8"/>
+          <!-- shoes -->
+          <ellipse cx="80" cy="193" rx="18" ry="9" fill="#FF8C69"/>
+          <ellipse cx="120" cy="193" rx="18" ry="9" fill="#FF8C69"/>
+          <!-- badge -->
+          <circle cx="155" cy="104" r="17" fill="#FF8C69"/>
+          <text x="155" y="109" text-anchor="middle" font-family="sans-serif" font-weight="900" font-size="10" fill="white">AI</text>
+        </svg>
+
+        <div class="char-name">AIバイトくん 🌸</div>
+        <div class="char-role">24H · 365DAYS · 文句なし · いつでもクビOK</div>
+        <div class="char-bubble">
+          あなたのお仕事、何をAIに<br>
+          任せられるか一緒に見つけましょう！✨
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     MARKET STATS (4 tiles only)
+════════════════════════════ -->
+<section style="background:white;border-top:2px solid var(--border);border-bottom:2px solid var(--border);padding:36px 0;">
+  <div class="con">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap;">
+      <span style="font-size:13px;font-weight:900;color:var(--gray);">📊 関西AI市場 最新データ</span>
+      <span style="font-size:10px;font-weight:700;color:var(--peach);background:var(--peach-l);border:1.5px solid var(--peach-m);border-radius:20px;padding:2px 10px;" id="mkt-date"></span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;" id="mkt-stats-grid"></div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     DIAGNOSIS
+════════════════════════════ -->
+<section class="diag-section" id="diag">
+<div class="con">
+  <div class="sec-label rv">✨ 無料・3分・登録不要</div>
+  <h2 class="sec-h2 rv">まず、<span>業種を選んでください。</span><br>それだけで診断が始まります。</h2>
+  <p class="sec-p rv">あなたのお仕事にAIが必要かどうか、正直にお伝えします。「不要」と判断したサービスはきちんと除外します。</p>
+
+  <!-- Industry -->
+  <div id="step-industry" class="rv">
+    <div class="ind-grid" id="ind-grid">
+      <div class="ind-card" data-ind="製造業" onclick="selInd(this)">
+        <span class="ic">🏭</span><h3>製造業</h3><p>受注・在庫・品質管理など</p>
+      </div>
+      <div class="ind-card" data-ind="小売・卸売業" onclick="selInd(this)">
+        <span class="ic">🛒</span><h3>小売・卸売業</h3><p>在庫・発注・顧客対応</p>
+      </div>
+      <div class="ind-card" data-ind="飲食・宿泊業" onclick="selInd(this)">
+        <span class="ic">🍽️</span><h3>飲食・宿泊業</h3><p>予約・仕入・シフト管理</p>
+      </div>
+      <div class="ind-card" data-ind="建設・不動産業" onclick="selInd(this)">
+        <span class="ic">🏗️</span><h3>建設・不動産業</h3><p>見積・工程・物件管理</p>
+      </div>
+      <div class="ind-card" data-ind="医療・福祉" onclick="selInd(this)">
+        <span class="ic">🏥</span><h3>医療・福祉</h3><p>予約・記録・請求・シフト</p>
+      </div>
+      <div class="ind-card" data-ind="その他サービス業" onclick="selInd(this)">
+        <span class="ic">💼</span><h3>その他サービス業</h3><p>士業・美容・教育など</p>
+      </div>
+    </div>
+    <div class="ind-next-wrap" style="margin-top:24px;">
+      <button class="btn-qnext" id="btn-ind-next" onclick="startQuiz()" disabled>診断スタート ✨</button>
+    </div>
+  </div>
+
+  <!-- Quiz -->
+  <div id="step-quiz" style="display:none;">
+    <div class="quiz-box">
+      <div class="q-prog-wrap">
+        <div class="q-prog-bar"><div class="q-prog-fill" id="qfill" style="width:0%"></div></div>
+        <div class="q-prog-txt"><span id="qlbl-l">質問 1 / 8</span><span id="qlbl-r">0%</span></div>
+      </div>
+      <div id="qcontent"></div>
+      <div class="q-nav">
+        <button class="btn-qback" id="btnback" onclick="qBack()" style="visibility:hidden">← 戻る</button>
+        <button class="btn-qnext" id="btnnext" onclick="qNext()" disabled>次へ →</button>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ════════════════════════════
+     CONCEPT
+════════════════════════════ -->
+<section class="concept-section" id="concept">
+<div class="con">
+  <div class="sec-label rv">💡 AIってそもそも何？</div>
+  <h2 class="sec-h2 rv">AIは<span>学ばなくていい。</span><br>使いこなさなくていい。</h2>
+
+  <div class="concept-grid">
+    <div class="rv">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-line">
+            <div class="tl-dot-c">95年</div>
+            <div class="tl-connector"></div>
+          </div>
+          <div class="tl-body">
+            <h4>インターネットが登場</h4>
+            <p>「難しそう…」と思われていたのに、今は使わない人ゼロ。</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-line">
+            <div class="tl-dot-c">07年</div>
+            <div class="tl-connector"></div>
+          </div>
+          <div class="tl-body">
+            <h4>スマートフォンが登場</h4>
+            <p>「仕事で使えるの？」と言われていたのに、今は全員が毎日使用。</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-line">
+            <div class="tl-dot-c now">今</div>
+          </div>
+          <div class="tl-body">
+            <h4>AIが来た。</h4>
+            <p>「勉強しなきゃ？」→ <span class="now-text">学ばなくていい。丸投げでいい。</span><br>5年後には「当たり前」になっています。勉強するより、今動いた人が有利です。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="shigoto-card rv">
+        <div style="font-family:'Zen Maru Gothic',sans-serif;font-size:15px;font-weight:900;color:var(--ink);margin-bottom:4px;">「仕事」と「業務」は違います。ココ、大事なポイント。</div>
+        <div style="font-size:13px;color:var(--gray);margin-bottom:14px;">AIが奪うのは「業務」だけ。「仕事」は生き残れます。</div>
+        <div class="shigoto-grid">
+          <div class="sg-item work">
+            <div class="sg-tag">✨ 仕事（社長業、リーダーシップ）</div>
+            <h5>経営・判断・人との関係</h5>
+            <p>戦略を立てる、お客様と話す、チームをまとめる。これはAIにはできません。</p>
+          </div>
+          <div class="sg-item task">
+            <div class="sg-tag">🔄 業務（AIに任せられる）</div>
+            <h5>繰り返しの単純作業</h5>
+            <p>データ入力、書類作成、定型メール返信。これをAIが代わりにやります。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rv">
+      <div class="vs-card">
+        <div class="vs-thead">
+          <div class="vs-th bad">😓 従来のAI支援</div>
+          <div class="vs-th vs">VS</div>
+          <div class="vs-th good">🌸 AIバイトくん365なら</div>
+        </div>
+        <div class="vs-row-item"><div class="vc bad">「まず勉強しましょう」</div><div class="vc mid">→</div><div class="vc good">勉強ゼロ・丸投げOK</div></div>
+        <div class="vs-row-item"><div class="vc bad">初期費用100〜300万円</div><div class="vc mid">→</div><div class="vc good">初期費用ほぼ¥0〜</div></div>
+        <div class="vs-row-item"><div class="vc bad">大企業向けの事例ばかり</div><div class="vc mid">→</div><div class="vc good">関西中小企業に特化</div></div>
+        <div class="vs-row-item"><div class="vc bad">導入後はノーサポート</div><div class="vc mid">→</div><div class="vc good">内製化まで伴走</div></div>
+        <div class="vs-row-item"><div class="vc bad">解約が複雑・違約金あり</div><div class="vc mid">→</div><div class="vc good">いつでも契約終了できる</div></div>
+        <div class="vs-row-item"><div class="vc bad">定着まで6ヶ月〜</div><div class="vc mid">→</div><div class="vc good">最短即日稼働</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ════════════════════════════
+     SERVICES & ESTIMATE
+════════════════════════════ -->
+<section class="services-section" id="services">
+<div class="con">
+  <div class="sec-label rv">📋 40のサービスから自動提案</div>
+  <h2 class="sec-h2 rv">あなたに<span>「必要」なもの</span>だけを<br>正直に仕分けします。</h2>
+  <p class="sec-p rv">診断結果に合わせて40のサービスを自動レコメンド。相場と最安値を並べて表示するので「知らなくて損した。」は起きません。</p>
+
+  <div id="rec-waiting">
+    <div class="wi">🔍</div>
+    <p>上の「無料診断」を完了すると<br>あなた専用のサービスリストが表示されます</p>
+    <a href="#diag" class="btn-main" style="margin-top:24px;display:inline-flex;">診断する（3分）✨</a>
+  </div>
+
+  <div id="rec-result" style="display:none;">
+    <div class="rec-header">
+      <div class="rh-title" id="rec-title">診断結果</div>
+      <div class="rh-count">
+        <div class="rc-n" id="rec-count">0</div>
+        <div class="rc-l">件のサービスをおすすめ</div>
+      </div>
+    </div>
+    <div class="svc-grid" id="services-grid"></div>
+    <div class="est-box">
+      <div class="est-grid">
+        <div>
+          <div class="est-label">月額合計（最安値プラン）</div>
+          <div class="est-amount">¥<span id="est-num">0</span><span>/月</span></div>
+          <div class="est-note">相場：<span id="est-market">¥0</span>/月 のところ<br>初期費用 <strong style="color:var(--yellow);">¥0</strong>・いつでも解約可</div>
+          <div style="margin-top:20px;">
+            <div class="est-bar-wrap">
+              <div class="est-bar-info"><span>相場</span><span>100%</span></div>
+              <div class="est-bar-bg"><div class="est-bar-fill" id="bar-market" style="width:100%;background:rgba(255,255,255,.12);"></div></div>
+            </div>
+            <div class="est-bar-wrap">
+              <div class="est-bar-info"><span style="color:var(--yellow);">AIバイトくん365</span><span id="bar-our-pct">—</span></div>
+              <div class="est-bar-bg"><div class="est-bar-fill" id="bar-our" style="width:0%;background:linear-gradient(90deg,var(--peach),var(--yellow));"></div></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="est-label">AIバイトくんの「時給」換算</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.45);line-height:1.8;margin-bottom:16px;">24時間×365日＝<strong style="color:white;">8,760時間/年</strong><br>この月額を時給に換算すると……</div>
+          <div class="hourly-card">
+            <div class="hc-label">AIバイトくんの時給</div>
+            <div class="hc-val">¥<span id="hourly-num">14</span><span>〜/時間</span></div>
+            <div class="hc-note">関西の最低賃金：¥1,050/時間～<br>文句なし・残業代なし・社保なし 🤖</div>
+          </div>
+        </div>
+      </div>
+      <div class="est-cta-area">
+        <div style="background:rgba(255,216,77,.1);border:1.5px solid rgba(255,216,77,.3);border-radius:16px;padding:16px 24px;margin-bottom:20px;display:inline-block;">
+          <div style="font-size:11px;font-weight:900;color:var(--yellow);letter-spacing:.1em;margin-bottom:6px;">🎁 LINE相談の方への特典</div>
+          <div style="font-size:14px;font-weight:700;color:white;line-height:1.7;">あなたの業種に合った<br>「使えるAI TOP3」を無料でお送りします。</div>
+        </div>
+        <div style="margin-bottom:16px;">
+          <a href="https://lin.ee/lblXfAH" target="_blank" class="btn-main" style="background:linear-gradient(135deg,#06C755,#00A040);box-shadow:0 6px 24px rgba(6,199,85,.4);text-decoration:none;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white" style="flex-shrink:0;"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+            ちょっと聞いてみる 🌸
+          </a>
+        </div>
+        <div style="font-size:12px;color:rgba(255,255,255,.4);">売り込みはしません。気になったことを話してくれるだけで大丈夫です。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ════════════════════════════
+     CLOSING — SKIT + FLOW
+════════════════════════════ -->
+<section class="closing-section" id="contact">
+<div class="con">
+
+  <!-- ── SKIT ── -->
+  <div class="sec-label rv">💬 こんな変化が起きています</div>
+  <h2 class="sec-h2 rv">ある女性オーナーと<br><span>AIバイトくんのやり取り。</span></h2>
+  <p class="sec-p rv" style="margin-bottom:0;">美容室を一人で切り盛りするMさん（40代・神戸市）の実際のご相談をもとにしたイメージです。</p>
+
+  <div class="skit-box rv" style="margin-top:32px;">
+    <div class="skit-title">📱 相談から2週間後の変化</div>
+
+    <!-- phase label -->
+    <div class="skit-phase">😓 相談したとき</div>
+    <div class="skit-msgs" id="skit-msgs">
+
+      <div class="msg l" style="opacity:0;transition:opacity .4s,transform .4s;transform:translateY(10px)">
+        <div class="msg-av">👩</div>
+        <div class="msg-inner">
+          <div class="msg-name">Mさん（美容室オーナー）</div>
+          <div class="msg-bbl">ホットペッパーの予約確認メールを毎日手入力でカレンダーに転記してて……1日30分くらい取られてるんです。もう嫌になってきて。</div>
+        </div>
+      </div>
+
+      <div class="msg r" style="opacity:0;transition:opacity .4s .35s,transform .4s .35s;transform:translateY(10px)">
+        <div class="msg-av ai">🤖</div>
+        <div class="msg-inner">
+          <div class="msg-name">AIバイトくん</div>
+          <div class="msg-bbl">それ、完全に自動化できます！予約メールをAIが読んで、Googleカレンダーに自動で転記する仕組みを作れますよ。</div>
+        </div>
+      </div>
+
+      <div class="msg l" style="opacity:0;transition:opacity .4s .7s,transform .4s .7s;transform:translateY(10px)">
+        <div class="msg-av">👩</div>
+        <div class="msg-inner">
+          <div class="msg-name">Mさん</div>
+          <div class="msg-bbl">本当ですか？あと、お客様へのリマインドLINEも毎回手打ちで送ってて、これも結構しんどくて…</div>
+        </div>
+      </div>
+
+      <div class="msg r" style="opacity:0;transition:opacity .4s 1.05s,transform .4s 1.05s;transform:translateY(10px)">
+        <div class="msg-av ai">🤖</div>
+        <div class="msg-inner">
+          <div class="msg-name">AIバイトくん</div>
+          <div class="msg-bbl">それも一緒に解決しましょう！予約日の前日に自動でリマインドLINEを送る設定ができます。Mさんは何もしなくて大丈夫です ✨</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- divider -->
+    <div class="skit-divider">
+      <div class="sd-line"></div>
+      <div class="sd-label">🌸 Mさんの店に合ったAIシステム導入</div>
+      <div class="sd-line"></div>
+    </div>
+
+    <!-- after phase -->
+    <div class="skit-phase" style="background:var(--mint-l);color:var(--mint);border-color:var(--mint);">✨ 3週間後のMさん</div>
+    <div class="skit-msgs">
+
+      <div class="msg l" style="opacity:0;transition:opacity .4s 1.4s,transform .4s 1.4s;transform:translateY(10px)" data-skit2>
+        <div class="msg-av">👩</div>
+        <div class="msg-inner">
+          <div class="msg-name">Mさん</div>
+          <div class="msg-bbl">予約の転記、本当にゼロになりました！リマインドLINEも勝手に飛んでて、お客様からも「丁寧ですね」って言ってもらえて。</div>
+        </div>
+      </div>
+
+      <div class="msg r" style="opacity:0;transition:opacity .4s 1.75s,transform .4s 1.75s;transform:translateY(10px)" data-skit2>
+        <div class="msg-av ai">🤖</div>
+        <div class="msg-inner">
+          <div class="msg-name">AIバイトくん</div>
+          <div class="msg-bbl">よかったです！空いた30分で何をされましたか？☺</div>
+        </div>
+      </div>
+
+      <div class="msg l" style="opacity:0;transition:opacity .4s 2.1s,transform .4s 2.1s;transform:translateY(10px)" data-skit2>
+        <div class="msg-av">👩</div>
+        <div class="msg-inner">
+          <div class="msg-name">Mさん</div>
+          <div class="msg-bbl">毎朝コーヒーをゆっくり飲めるようになりました。なんか、それだけですごく気持ちが違う。もっと早く頼めばよかった。</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── WHY CARDS ── -->
+  <div class="why-grid">
+    <div class="why-card rv">
+      <span class="why-ic">¥0</span>
+      <h4>初期費用ゼロの理由</h4>
+      <p>「新但馬情報整理事務所」が主催する兵庫のクリエイタープロジェクトが運営。「ビジネスライクじゃない、クリエイティブな思考がビジネスの課題解決に必要だと知ってほしい！」という情熱が初期費用無料を実現しています。</p>
+    </div>
+    <div class="why-card rv">
+      <span class="why-ic">🗾</span>
+      <h4>兵庫・大阪・京都ならどこでも</h4>
+      <p>神戸・姫路・豊岡・大阪・京都——現地に伺います。「地元のクリエイターが地元のあなたを【自由】にする。」地産地消の信頼関係を大切にしています。</p>
+    </div>
+    <div class="why-card rv">
+      <span class="why-ic">🤝</span>
+      <h4>あなたが自走できるまでの間だけ伴走します</h4>
+      <p>「ずっと依存させる」ビジネスモデルではありません。社長とスタッフが自走できるまで伴走し、必要がなくなったら任務完了。それが私たちのゴールです。</p>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ════════════════════════════
+     FLOW SECTION
+════════════════════════════ -->
+<section style="padding:80px 0;background:linear-gradient(180deg,#FFF8F5 0%,#FFF0F8 100%);">
+<div class="con">
+  <div class="sec-label rv">🌸 ご相談から自走まで</div>
+  <h2 class="sec-h2 rv">はじめての方でも<span>安心の4ステップ。</span></h2>
+  <p class="sec-p rv">「相談して終わり」ではありません。自走できるようになるまで、そばにいます。</p>
+
+  <div class="flow-wrap rv">
+
+    <!-- Step 1 -->
+    <div class="flow-step">
+      <div class="flow-icon-wrap" style="background:var(--peach-l);border-color:var(--peach-m);">
+        <span class="flow-icon">☕</span>
+      </div>
+      <div class="flow-content">
+        <div class="flow-num" style="color:var(--peach);">STEP 1</div>
+        <h3 class="flow-title">無料でご相談</h3>
+        <p class="flow-desc">まずは気軽にお話を聞かせてください。「AIって何から始めたらいいの？」という段階で全然OK。兵庫・大阪・京都ならどこへでも伺います（オンライン可）。</p>
+        <div class="flow-tag">📅 所要時間：30〜60分 / 完全無料</div>
+      </div>
+      <div class="flow-arrow">↓</div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="flow-step">
+      <div class="flow-icon-wrap" style="background:var(--yellow-l);border-color:var(--yellow);">
+        <span class="flow-icon">🔧</span>
+      </div>
+      <div class="flow-content">
+        <div class="flow-num" style="color:#C9970A;">STEP 2</div>
+        <h3 class="flow-title">AIバイトくんが御社専用のAIをセットアップ</h3>
+        <p class="flow-desc">診断結果をもとに、あなたのお仕事に合ったAIを設定します。面倒な設定はすべてこちらで。オーナーさんは「こんな感じで動いてほしい」を伝えるだけ。</p>
+        <div class="flow-tag">⚡ 最短即日〜1週間で稼働スタート</div>
+      </div>
+      <div class="flow-arrow">↓</div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="flow-step">
+      <div class="flow-icon-wrap" style="background:var(--mint-l);border-color:var(--mint);">
+        <span class="flow-icon">🌱</span>
+      </div>
+      <div class="flow-content">
+        <div class="flow-num" style="color:var(--mint);">STEP 3</div>
+        <h3 class="flow-title">一緒に育てる・定着させる</h3>
+        <p class="flow-desc">稼働後も月1〜2回のチェックインで「うまく動いているか」「もっと改善できることはないか」を一緒に確認。AIは使いながら育てていくものです。</p>
+        <div class="flow-tag">🔄 月額格安サポートで継続チューニング</div>
+      </div>
+      <div class="flow-arrow">↓</div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="flow-step flow-step-last">
+      <div class="flow-icon-wrap" style="background:var(--lav-l);border-color:var(--lavender);">
+        <span class="flow-icon">🎓</span>
+      </div>
+      <div class="flow-content">
+        <div class="flow-num" style="color:var(--lavender);">STEP 4</div>
+        <h3 class="flow-title">自走できたら「任務完了」</h3>
+        <p class="flow-desc">社員やスタッフが自分でAIを使いこなせるようになったら、サポートは終了です。縛りも違約金もなし。「もう大丈夫です」と一言おっしゃっていただけたら、立ち去ります。</p>
+        <div class="flow-tag" style="background:var(--lav-l);color:var(--lavender);border-color:var(--lavender);">🌸 いつでも解約可・空いた時間で自由に羽ばたいてください！</div>
+      </div>
+    </div>
+
+    <!-- guarantee ribbon -->
+    <div class="flow-guarantee rv">
+      <div class="fg-icon">🛡️</div>
+      <div class="fg-text">
+        <strong>安心のお約束</strong>
+        <span>契約後に「思っていたものと違う」と感じたら、いつでも無料で方向転換できます。縛りなし・違約金なし。</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ════════════════════════════
+     FINAL CTA
+════════════════════════════ -->
+<section class="fcta-section">
+<div class="con">
+  <h2 class="fcta-h2 rv">ちょっと、<span>聞いてみませんか？</span><br>🌸</h2>
+  <p class="fcta-p rv">
+    「うちに合うか分からない」「どこから始めれば？」「予算は？」<br>
+    全部その場でお答えします。兵庫・大阪・京都の事業者さん限定、完全無料です。
+  </p>
+
+  <!-- 特典ボックス -->
+  <div class="rv" style="display:inline-block;background:white;border:2.5px solid #FFD84D;border-radius:24px;padding:24px 36px;margin-bottom:32px;position:relative;z-index:1;box-shadow:0 8px 32px rgba(255,216,77,.2);">
+    <div style="font-size:11px;font-weight:900;color:#C9970A;letter-spacing:.15em;margin-bottom:10px;">🎁 LINE相談の方への特典</div>
+    <div style="font-family:'Zen Maru Gothic',sans-serif;font-size:clamp(15px,2vw,20px);font-weight:900;color:var(--ink);line-height:1.5;margin-bottom:8px;">
+      あなたの業種に合った<br>
+      <span style="color:var(--peach);">「使えるAI TOP3」</span>を無料でお送りします。
+    </div>
+    <div style="font-size:12px;color:var(--gray);line-height:1.7;">
+      相談後に、あなたのお仕事にそのまま使えるAIツールを<br>
+      厳選して1枚にまとめてお渡しします。しつこい営業無し！
+    </div>
+  </div>
+
+  <!-- LINEボタン -->
+  <div class="rv" style="position:relative;z-index:1;">
+    <a href="https://lin.ee/lblXfAH" target="_blank"
+      style="display:inline-flex;align-items:center;gap:12px;
+             background:linear-gradient(135deg,#06C755,#00A040);
+             color:white;text-decoration:none;
+             padding:20px 52px;border-radius:50px;
+             font-family:'M PLUS Rounded 1c',sans-serif;
+             font-size:18px;font-weight:900;
+             box-shadow:0 8px 32px rgba(6,199,85,.4);
+             transition:all .25s;letter-spacing:.03em;"
+      onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 40px rgba(6,199,85,.5)'"
+      onmouseout="this.style.transform='';this.style.boxShadow='0 8px 32px rgba(6,199,85,.4)'">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+      ちょっと聞いてみる 🌸
+    </a>
+    <div style="margin-top:14px;font-size:13px;color:var(--gray);position:relative;z-index:1;">
+      売り込みはしません。気になったことを話してくれるだけで大丈夫です。
+    </div>
+  </div>
+
+  <div class="fcta-notes rv">
+    <span>初期費用0円</span>
+    <span>登録不要</span>
+    <span>いつでも解約可</span>
+    <span>関西3府県対応</span>
+    <span>クリエイター直対応</span>
+  </div>
+</div>
+</section>
+
+<footer>
+  <div>
+    <div class="foot-logo">🤖 AIバイトくん365</div>
+    <div class="foot-sub">新但馬情報整理事務所 × 兵庫クリエイターズ・プロジェクト</div>
+  </div>
+  <div class="foot-r">兵庫・大阪・京都 中小企業専門<br>AI導入・業務自動化支援<br>© 2026 AIバイトくん365</div>
+</footer>
+
+<!-- ════════════════════
+     JAVASCRIPT
+════════════════════ -->
+<script>
+// ── MARKET STATS ONLY ──
+const MARKET_STATS = [
+  {icon:'💰',val:'¥5万〜25万',lbl:'関西の月額相場',sub:'中小企業向けプランの相場'},
+  {icon:'🏁',val:'¥10〜50万',lbl:'初期費用の平均',sub:'大手コンサルは100万超も'},
+  {icon:'📈',val:'16%',lbl:'関西のAI導入率',sub:'2024年 帝国データバンク調査'},
+  {icon:'👤',val:'47%',lbl:'「人材不足」が導入障壁',sub:'最大の課題は価格より人材'},
+];
+
+function renderMarketStats(){
+  const d = new Date();
+  document.getElementById('mkt-date').textContent =
+    `${d.getFullYear()}年${d.getMonth()+1}月更新`;
+  document.getElementById('mkt-stats-grid').innerHTML = MARKET_STATS.map(s=>`
+    <div style="background:white;border:2px solid var(--border);border-radius:16px;padding:20px 18px;transition:all .25s;"
+      onmouseover="this.style.borderColor='var(--peach-m)';this.style.transform='translateY(-2px)'"
+      onmouseout="this.style.borderColor='var(--border)';this.style.transform=''">
+      <div style="font-size:24px;margin-bottom:8px;">${s.icon}</div>
+      <div style="font-family:'Zen Maru Gothic',sans-serif;font-size:22px;font-weight:900;color:var(--peach);line-height:1;margin-bottom:4px;">${s.val}</div>
+      <div style="font-size:13px;font-weight:900;color:var(--ink);margin-bottom:4px;">${s.lbl}</div>
+      <div style="font-size:11px;color:var(--gray);">${s.sub}</div>
+    </div>`).join('');
+}
+renderMarketStats();
+
+// ── QUIZ DATA ──
+const QS=[
+  {q:'毎日・毎週、同じ作業を繰り返していることがありますか？',sub:'データ入力・書類作成・転記など',opts:['かなりある（業務の半分以上）','少しある（週数時間程度）','ほとんどない','あるけど気にしていなかった'],key:'routine'},
+  {q:'お客様からの問い合わせ対応に、1日どれくらい時間を使っていますか？',sub:'電話・メール・LINE等すべて含む',opts:['1時間以上','30分〜1時間','30分未満','ほとんどない'],key:'inquiry'},
+  {q:'請求書・見積書・書類の作成が手間に感じていますか？',sub:'',opts:['かなり感じている','少し感じている','あまり感じていない','外注しているので不明'],key:'docs'},
+  {q:'SNSやホームページの更新・投稿はどうしていますか？',sub:'',opts:['自分でやっているが手が回っていない','担当者がいるが負担が大きい','ほとんどやっていない','外注している'],key:'sns'},
+  {q:'スタッフのシフト管理や採用に時間をとられていますか？',sub:'',opts:['かなり時間がかかっている','少し時間がかかっている','ほとんどかからない','自分一人で回している'],key:'hr'},
+  {q:'売上・在庫のデータ管理はExcelなどで手動でやっていますか？',sub:'',opts:['Excelで手動（ほぼ毎日）','Excelだが週1程度','専用ソフトを使っている','ほとんど管理していない'],key:'data'},
+  {q:'社内のデジタルツールへの受け入れ態勢は？',sub:'',opts:['社長が積極的なら社員も動く','ITが苦手なスタッフが多い','すでにいくつか使っている','よく分からない'],key:'readiness'},
+  {q:'月いくらまでならAIバイトを雇えそうですか？',sub:'「お試し」でも大丈夫です。初期費用は0円です',opts:['まずは無料ツールで試したい','月1〜3万円程度','月3〜10万円程度','10万円以上（助成金活用も検討）'],key:'budget'},
+];
+
+let qStep=0,answers={},selInd_val='';
+
+function selInd(el){
+  document.querySelectorAll('.ind-card').forEach(c=>c.classList.remove('sel'));
+  el.classList.add('sel');
+  selInd_val=el.dataset.ind;
+  document.getElementById('btn-ind-next').disabled=false;
+}
+
+function startQuiz(){
+  document.getElementById('step-industry').style.display='none';
+  document.getElementById('step-quiz').style.display='block';
+  renderQ();
+}
+
+function renderQ(){
+  const q=QS[qStep];
+  const pct=Math.round((qStep/QS.length)*100);
+  document.getElementById('qfill').style.width=pct+'%';
+  document.getElementById('qlbl-l').textContent=`質問 ${qStep+1} / ${QS.length}`;
+  document.getElementById('qlbl-r').textContent=pct+'%';
+  document.getElementById('btnnext').disabled=true;
+  document.getElementById('btnnext').textContent=qStep===QS.length-1?'診断結果を見る ✨':'次へ →';
+  document.getElementById('btnback').style.visibility=qStep>0?'visible':'hidden';
+  document.getElementById('qcontent').innerHTML=`
+    <div class="q-question">Q${qStep+1}. ${q.q}</div>
+    ${q.sub?`<div class="q-sub">${q.sub}</div>`:''}
+    <div class="q-opts">
+      ${q.opts.map(o=>`<button class="q-opt${answers[q.key]===o?' sel':''}" onclick="selOpt(this,'${q.key}','${o.replace(/'/g,"\\'")}')">
+        ${answers[q.key]===o?'✓ ':''}${o}
+      </button>`).join('')}
+    </div>`;
+  if(answers[q.key]) document.getElementById('btnnext').disabled=false;
+}
+
+function selOpt(el,key,val){
+  document.querySelectorAll('.q-opt').forEach(b=>{b.classList.remove('sel');b.textContent=b.textContent.replace('✓ ','');});
+  el.classList.add('sel');
+  if(!el.textContent.startsWith('✓')) el.textContent='✓ '+el.textContent.trim();
+  answers[key]=val;
+  document.getElementById('btnnext').disabled=false;
+}
+function qNext(){if(qStep<QS.length-1){qStep++;renderQ();}else{showResults();}}
+function qBack(){if(qStep>0){qStep--;renderQ();}}
+
+// ── 40 SERVICES ──
+const SVC=[
+  {id:1,cat:'📧 メール・問い合わせ',name:'メール自動返信・分類AI',desc:'定型問い合わせに自動返信。重要メールだけ通知',market:15000,our:3800,tags:['inquiry'],ind:['全業種']},
+  {id:2,cat:'📧 メール・問い合わせ',name:'チャットボット（LINE/HP）',desc:'24時間問い合わせ対応。営業時間外の機会損失をゼロに',market:30000,our:6800,tags:['inquiry'],ind:['小売・卸売業','飲食・宿泊業','医療・福祉','その他サービス業']},
+  {id:3,cat:'📧 メール・問い合わせ',name:'クレーム対応テンプレAI',desc:'過去の対応から最適な返信文を自動生成',market:20000,our:4500,tags:['inquiry'],ind:['全業種']},
+  {id:4,cat:'📄 書類・経理',name:'請求書・見積書自動生成',desc:'顧客データから自動作成。PDF化・メール送付まで一括',market:25000,our:5800,tags:['docs'],ind:['全業種']},
+  {id:5,cat:'📄 書類・経理',name:'領収書・経費OCR入力',desc:'写真を撮るだけで経費を自動入力',market:18000,our:3200,tags:['docs','data'],ind:['全業種']},
+  {id:6,cat:'📄 書類・経理',name:'契約書チェックAI',desc:'契約書のリスク箇所を自動検出',market:40000,our:8000,tags:['docs'],ind:['建設・不動産業','その他サービス業']},
+  {id:7,cat:'📄 書類・経理',name:'給与計算自動化',desc:'勤怠データと連携して給与計算・明細作成を自動化',market:22000,our:4800,tags:['hr'],ind:['全業種']},
+  {id:8,cat:'📊 データ・在庫管理',name:'売上レポート自動作成',desc:'日次・週次・月次の売上をグラフ付きで自動化',market:20000,our:4200,tags:['data'],ind:['全業種']},
+  {id:9,cat:'📊 データ・在庫管理',name:'在庫管理・発注自動化',desc:'在庫が一定以下になると自動で発注',market:35000,our:7500,tags:['data','routine'],ind:['製造業','小売・卸売業','飲食・宿泊業']},
+  {id:10,cat:'📊 データ・在庫管理',name:'需要予測AI',desc:'過去データから売れ筋・閑散期を予測',market:50000,our:9800,tags:['data'],ind:['製造業','小売・卸売業','飲食・宿泊業']},
+  {id:11,cat:'📊 データ・在庫管理',name:'Excelデータ自動集計',desc:'複数シートのデータを自動で集計・グラフ化',market:15000,our:2800,tags:['data','routine'],ind:['全業種']},
+  {id:12,cat:'📱 SNS・マーケティング',name:'SNS投稿文AI自動生成',desc:'業種・商品情報を入れるだけで投稿文を自動作成',market:20000,our:4500,tags:['sns'],ind:['全業種']},
+  {id:13,cat:'📱 SNS・マーケティング',name:'Instagram自動投稿',desc:'作成済みコンテンツを最適時間に自動投稿',market:15000,our:2800,tags:['sns'],ind:['小売・卸売業','飲食・宿泊業','医療・福祉','その他サービス業']},
+  {id:14,cat:'📱 SNS・マーケティング',name:'口コミ返信AI',desc:'Googleマップ等の口コミに自動返信文を生成',market:18000,our:3500,tags:['sns','inquiry'],ind:['飲食・宿泊業','小売・卸売業','医療・福祉']},
+  {id:15,cat:'📱 SNS・マーケティング',name:'メルマガ自動配信',desc:'顧客セグメントに合わせたメルマガを自動作成・配信',market:25000,our:5200,tags:['sns'],ind:['小売・卸売業','その他サービス業']},
+  {id:16,cat:'📅 予約・スケジュール',name:'24時間予約受付bot',desc:'LINEやHPから24時間予約受付。カレンダー自動連携',market:28000,our:5800,tags:['inquiry','routine'],ind:['飲食・宿泊業','医療・福祉','その他サービス業']},
+  {id:17,cat:'📅 予約・スケジュール',name:'シフト自動作成AI',desc:'スタッフの希望と業務量から最適シフトを自動作成',market:22000,our:4200,tags:['hr'],ind:['飲食・宿泊業','小売・卸売業','医療・福祉']},
+  {id:18,cat:'📅 予約・スケジュール',name:'工程・スケジュール管理AI',desc:'受注情報から工程を自動スケジュール化',market:35000,our:7200,tags:['routine','data'],ind:['製造業','建設・不動産業']},
+  {id:19,cat:'👤 採用・HR',name:'求人票AI作成',desc:'職種・条件を入力するだけで魅力的な求人文を自動作成',market:15000,our:2800,tags:['hr'],ind:['全業種']},
+  {id:20,cat:'👤 採用・HR',name:'応募者スクリーニングAI',desc:'履歴書・職務経歴書から適合度を自動スコアリング',market:30000,our:5500,tags:['hr'],ind:['全業種']},
+  {id:21,cat:'👤 採用・HR',name:'社内マニュアル自動生成',desc:'業務手順をヒアリングするだけでマニュアル化',market:20000,our:4000,tags:['hr','docs'],ind:['全業種']},
+  {id:22,cat:'🤝 顧客管理・営業',name:'顧客データ整理・CRM自動化',desc:'名刺・顧客情報を自動でCRMに取り込み',market:25000,our:5000,tags:['data','routine'],ind:['全業種']},
+  {id:23,cat:'🤝 顧客管理・営業',name:'営業日報AI自動作成',desc:'商談メモを入れるだけで日報を自動生成',market:18000,our:3200,tags:['docs','routine'],ind:['製造業','小売・卸売業','建設・不動産業','その他サービス業']},
+  {id:24,cat:'🤝 顧客管理・営業',name:'失注・解約予測AI',desc:'顧客の行動データから離脱リスクを早期検知',market:45000,our:8800,tags:['data'],ind:['小売・卸売業','その他サービス業']},
+  {id:25,cat:'🏭 製造・品質管理',name:'品質チェック画像AI',desc:'カメラで撮影するだけで製品の不良を自動検出',market:80000,our:15000,tags:['routine','data'],ind:['製造業']},
+  {id:26,cat:'🏭 製造・品質管理',name:'設備異常検知AI',desc:'センサーデータから設備の異常を予兆検知',market:60000,our:12000,tags:['data'],ind:['製造業']},
+  {id:27,cat:'🏭 製造・品質管理',name:'受注・生産計画自動化',desc:'受注データから最適な生産スケジュールを自動計画',market:50000,our:9500,tags:['routine','data'],ind:['製造業']},
+  {id:28,cat:'🏗️ 建設・不動産',name:'図面OCR・自動データ化',desc:'図面・設計書をAIでデータ化',market:40000,our:8000,tags:['docs'],ind:['建設・不動産業']},
+  {id:29,cat:'🏗️ 建設・不動産',name:'物件説明文AI生成',desc:'物件情報を入れるだけで説明文を自動作成',market:18000,our:3500,tags:['docs','sns'],ind:['建設・不動産業']},
+  {id:30,cat:'🏗️ 建設・不動産',name:'工事進捗報告自動化',desc:'現場写真から進捗報告書を自動生成',market:25000,our:5000,tags:['docs','routine'],ind:['建設・不動産業']},
+  {id:31,cat:'🍽️ 飲食・宿泊',name:'メニュー価格最適化AI',desc:'仕入れコスト・売れ行きデータからメニュー改善を提案',market:30000,our:5800,tags:['data'],ind:['飲食・宿泊業']},
+  {id:32,cat:'🍽️ 飲食・宿泊',name:'食材ロス削減AI',desc:'過去の売上から食材発注量を最適化',market:25000,our:4800,tags:['data','routine'],ind:['飲食・宿泊業']},
+  {id:33,cat:'🏥 医療・福祉',name:'カルテ・記録入力補助AI',desc:'音声入力をテキスト化。記録業務を大幅削減',market:35000,our:7000,tags:['routine','docs'],ind:['医療・福祉']},
+  {id:34,cat:'🏥 医療・福祉',name:'介護記録自動生成',desc:'口頭メモから介護日誌を自動作成',market:28000,our:5500,tags:['docs','routine'],ind:['医療・福祉']},
+  {id:35,cat:'🔍 リサーチ',name:'競合・市場リサーチ自動化',desc:'指定キーワードで競合情報を毎週自動収集',market:20000,our:3800,tags:['data'],ind:['全業種']},
+  {id:36,cat:'🔍 リサーチ',name:'補助金・助成金アラート',desc:'利用可能な補助金情報を自動で収集・通知',market:15000,our:2500,tags:['docs'],ind:['全業種']},
+  {id:37,cat:'📞 電話・音声',name:'電話対応AI（自動応答）',desc:'営業時間外の電話を自動受付。テキストで通知',market:25000,our:4800,tags:['inquiry'],ind:['全業種']},
+  {id:38,cat:'📞 電話・音声',name:'会議・商談の文字起こし',desc:'録音データを自動でテキスト化・要点抽出',market:15000,our:2800,tags:['routine','docs'],ind:['全業種']},
+  {id:39,cat:'🎨 コンテンツ制作',name:'商品画像の背景自動除去',desc:'商品写真の背景を一括自動除去',market:12000,our:2200,tags:['sns'],ind:['小売・卸売業','飲食・宿泊業']},
+  {id:40,cat:'🎨 コンテンツ制作',name:'チラシ・DM自動生成',desc:'商品情報を入れるだけでチラシ原稿を自動デザイン',market:20000,our:3800,tags:['sns','docs'],ind:['全業種']},
+];
+
+function showResults(){
+  document.getElementById('services').scrollIntoView({behavior:'smooth'});
+  const scored=SVC.map(s=>{
+    let sc=0;
+    if(s.ind.includes('全業種')||s.ind.includes(selInd_val)) sc+=3;
+    if(answers.routine?.includes('かなり')&&s.tags.includes('routine')) sc+=2;
+    if(answers.routine?.includes('少しある')&&s.tags.includes('routine')) sc+=1;
+    if(answers.inquiry&&!answers.inquiry.includes('ほとんど')&&s.tags.includes('inquiry')) sc+=2;
+    if(answers.docs?.includes('かなり')&&s.tags.includes('docs')) sc+=2;
+    if(answers.docs?.includes('少し')&&s.tags.includes('docs')) sc+=1;
+    if(answers.sns?.includes('手が回っていない')&&s.tags.includes('sns')) sc+=2;
+    if(answers.hr?.includes('かなり')&&s.tags.includes('hr')) sc+=2;
+    if(answers.data?.includes('手動')&&s.tags.includes('data')) sc+=2;
+    return{...s,score:sc};
+  }).sort((a,b)=>b.score-a.score);
+
+  document.getElementById('rec-waiting').style.display='none';
+  document.getElementById('rec-result').style.display='block';
+  document.getElementById('rec-title').textContent=selInd_val+'向け AI診断レポート 🌸';
+  const rec=scored.filter(s=>s.score>=4);
+  document.getElementById('rec-count').textContent=rec.length;
+
+  document.getElementById('services-grid').innerHTML=scored.map(s=>{
+    const isRec=s.score>=4;
+    return`<div class="svc-item ${isRec?'rec':'not-rec'}" id="svc-${s.id}">
+      <div class="svc-cb" onclick="toggleSvc(${s.id})">${isRec?'✓':''}</div>
+      <div class="svc-info">
+        <div class="svc-cat">${s.cat}</div>
+        <h4>${s.name}</h4>
+        <p>${s.desc}</p>
+        <div class="svc-prices">
+          <span class="svc-market">相場 ¥${s.market.toLocaleString()}/月</span>
+          <span class="svc-our">¥${s.our.toLocaleString()}/月</span>
+          ${isRec?'<span class="svc-badge">おすすめ ✨</span>':''}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  calcEst();
+}
+
+function calcEst(){
+  let total=0,market=0;
+  document.querySelectorAll('.svc-item.rec').forEach(el=>{
+    const s=SVC.find(x=>x.id===parseInt(el.id.replace('svc-','')));
+    if(s){total+=s.our;market+=s.market;}
+  });
+  animN('est-num',total);
+  document.getElementById('est-market').textContent='¥'+market.toLocaleString();
+  const hourly=Math.round((total*12)/(365*24));
+  animN('hourly-num',Math.max(hourly,14));
+  const pct=market>0?Math.round((total/market)*100):0;
+  document.getElementById('bar-our-pct').textContent=pct+'%';
+  setTimeout(()=>document.getElementById('bar-our').style.width=pct+'%',200);
+}
+
+function animN(id,target){
+  const el=document.getElementById(id);if(!el)return;
+  let cur=0;const step=Math.max(1,Math.ceil(target/30));
+  const t=setInterval(()=>{cur=Math.min(cur+step,target);el.textContent=cur.toLocaleString();if(cur>=target)clearInterval(t);},30);
+}
+
+function toggleSvc(id){
+  const el=document.getElementById('svc-'+id);if(!el)return;
+  const wasRec=el.classList.contains('rec');
+  el.classList.toggle('rec',!wasRec);
+  el.classList.toggle('not-rec',wasRec);
+  el.querySelector('.svc-cb').textContent=wasRec?'':'✓';
+  calcEst();
+}
+
+// ── SCROLL REVEAL ──
+const io=new IntersectionObserver(es=>es.forEach((e,i)=>{
+  if(e.isIntersecting){setTimeout(()=>e.target.classList.add('v'),i*70);io.unobserve(e.target);}
+}),{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+// ── SKIT ANIMATION — animate ALL .msg elements when skit-box enters view ──
+const skitBox = document.querySelector('.skit-box');
+if(skitBox){
+  const skitObs = new IntersectionObserver(es=>{
+    if(es[0].isIntersecting){
+      document.querySelectorAll('.skit-box .msg').forEach(m=>{
+        m.style.opacity='1';
+        m.style.transform='translateY(0)';
+      });
+      skitObs.disconnect();
+    }
+  },{threshold:.2});
+  skitObs.observe(skitBox);
+}
+
+// ── SMOOTH SCROLL ──
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}
+  });
+});
+</script>
+</body>
+</html>
